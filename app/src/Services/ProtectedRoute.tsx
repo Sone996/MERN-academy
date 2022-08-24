@@ -1,7 +1,7 @@
-import { FC, useContext, useEffect, memo } from "react";
+import { FC, useEffect, memo } from "react";
 import { Route, useHistory } from "react-router-dom";
 
-import { AppContext } from "../Context/AppProvider";
+// import { AppContext } from "../Context/AppProvider";
 
 import { authService } from "../Modules/AuthModule/Auth.service";
 // import { useFetchActiveUser } from "./Router.service";
@@ -12,7 +12,7 @@ export const ProtectedRoute: FC<any> = ({
 }) => {
   const history = useHistory();
 
-  const [contextState] = useContext(AppContext);
+  // const [contextState] = useContext(AppContext);
 
   // TODO :: da li ovo treba
   // useFetchActiveUser();

@@ -13,6 +13,8 @@ const TeacherHome: FC = () => {
     history.push({ pathname: `/single-course/${item.id}` });
   };
 
+  console.log('dosao sam ovde')
+
   let myCourses = TeacherHomeHook();
 
   return (

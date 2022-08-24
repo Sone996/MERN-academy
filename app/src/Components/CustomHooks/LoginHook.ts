@@ -34,8 +34,8 @@ export function LoginHook() {
         payload: response.data,
       });
       successMsg(notificationMsg(response, "lOGIN_SUCCESS"));
-      history.push("/teacher-home");
-      if (response.role === "teacher") {
+      if (response.data.user.role === "teacher") {
+        history.push("/teacher-home");
       } else {
         history.push("/student-home");
       }

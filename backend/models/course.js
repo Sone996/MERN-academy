@@ -19,8 +19,8 @@ const CourseSchema = new mongoose.Schema({
   average_mark: {
     type: Number,
     default: 0,
-    min: 1,
-    max: 2,
+    min: 0,
+    max: 5,
   },
   description: {
     type: String,

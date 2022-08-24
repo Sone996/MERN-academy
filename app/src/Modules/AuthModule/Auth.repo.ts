@@ -3,7 +3,7 @@ const ROUTES = {
   LOGIN: "/auth/login",
   REGISTER: "/auth/register",
   FETCH_ACCOUNT: "/user/session",
-  LOGOUT: "/logout",
+  LOGOUT: "/auth/logout",
 };
 
 class AuthRepo {

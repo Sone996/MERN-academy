@@ -15,10 +15,10 @@ const {
   getTeacherCourses,
 } = require("../controllers/course-controler");
 
-router.route("/courses").get(authenticateUser, getCourses)
+router.route("/courses").get(authenticateUser, getCourses).post(authenticateUser, createCourse)
 
 // router.get("/courses", getCourses);
-router.post("/courses", createCourse);
+// router.post("/courses", createCourse);
 router.get("/course/:id", getSingleCourse);
 router.patch("/course/:id", updateCourse);
 router.delete("/course/:id", deleteCourse);

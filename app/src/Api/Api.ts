@@ -14,7 +14,7 @@ axiosInstance.interceptors.request.use((config) => {
   return config;
 });
 
-console.log(localStorage.getItem(TOKEN_LS_NAME))
+// console.log(localStorage.getItem(TOKEN_LS_NAME))
 
 axiosInstance.defaults.headers.common['Authorization'] =
 'Bearer ' + localStorage.getItem(TOKEN_LS_NAME);
