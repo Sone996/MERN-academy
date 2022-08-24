@@ -7,7 +7,8 @@ class AuthService {
     try {
       data.password = SHA512(data.password).toString();
       const res = await authRepo.login(data);
-      localStorage.setItem(TOKEN_LS_NAME, res.data["session-id"]);
+      // stari nacin
+      // localStorage.setItem(TOKEN_LS_NAME, JSON.stringify(res.data.user));
       return Promise.resolve(res);
     } catch (error) {
       return Promise.reject(error);
@@ -20,16 +21,24 @@ class AuthService {
     return authRepo.register(data);
   }
 
-  fetchActiveAccount() {
-    return authRepo.fetchActiveAccount();
-  }
+  // TODO :: da li ovo treba
+  // fetchActiveAccount() {
+  //   return authRepo.fetchActiveAccount();
+  // }
 
   logout() {
     return authRepo.logout();
   }
 
   isLogged() {
-    return localStorage.getItem(TOKEN_LS_NAME);
+    // return JSON.parse(localStorage.getItem(TOKEN_LS_NAME) as string);
+    let x = localStorage.getItem(TOKEN_LS_NAME) as string
+    var base64Url = x.split('.')[1];
+    var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+    return JSON.parse(jsonPayload);
   }
 }
 

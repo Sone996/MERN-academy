@@ -1,3 +1,36 @@
+const mongoose = require("mongoose");
+
+const CourseSchema = new mongoose.Schema({
+  teacher_id: {
+    type: mongoose.Schema.ObjectId,
+    ref: "User",
+    required: true,
+  },
+  name: {
+    type: String,
+    required: [true, "Please provide name"],
+    minlength: 3,
+    maxlength: 120,
+  },
+  price: {
+    type: Number,
+    required: [true, "Please provide price"],
+  },
+  average_mark: {
+    type: Number,
+    default: 0,
+    min: 1,
+    max: 2,
+  },
+  description: {
+    type: String,
+    minlength: 3,
+    maxlength: 512,
+  },
+});
+
+module.exports = mongoose.model("Courses", CourseSchema);
+
 // class Course(db.Model, BaseModel):
 //     __tablename__ = 'tbl_course'
 

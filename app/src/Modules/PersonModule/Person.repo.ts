@@ -28,7 +28,7 @@ class PersonRepo {
   }
 
   fetchMyCourses(id: number) {
-    const URL = `${ROUTES.TEACHER}/${id}${ROUTES.COURSES}`;
+    const URL = `${ROUTES.COURSE}${ROUTES.TEACHER}/${id}${ROUTES.COURSES}`;
     return api.get(URL);
   }
 

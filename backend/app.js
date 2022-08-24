@@ -16,6 +16,7 @@ app.use(bp.urlencoded({ extended: true }));
 //routes
 const userRouter = require("./routes/user-routes");
 const authRouter = require("./routes/auth-routes");
+const courseRouter = require("./routes/course-routes");
 // const productRouter = require('./routes/productRoutes');
 // const reviewRouter = require('./routes/reviewRoutes');
 // const orderRouter = require('./routes/orderRoutes');
@@ -30,6 +31,7 @@ app.use(cors());
 
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/course", courseRouter)
 
 app.use(notFound);
 app.use(errorHandlerMiddleware);

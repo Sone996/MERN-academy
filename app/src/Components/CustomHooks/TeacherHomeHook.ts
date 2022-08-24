@@ -1,13 +1,15 @@
-import { useQuery, useQueryClient } from "react-query";
+import { useQuery } from "react-query";
+import { authService } from "../../Modules/AuthModule/Auth.service";
 import { personService } from "../../Modules/PersonModule/Person.service";
 import { notificationMsg } from "../../Services/BaseService";
 import { errorMsg } from "../../Services/MessageDisplayHandler";
 
 const TeacherHomeHook = () => {
-  const loggedUser: any = useQueryClient().getQueryData("activeUser");
+  // const loggedUser: any = useQueryClient().getQueryData("activeUser");
+  const loggedUser = authService.isLogged();
 
   const fetchCourses = async () => {
-    const res = await personService.fetchMyCourses(loggedUser.id);
+    const res = await personService.fetchMyCourses(loggedUser.userId);
     return res.data;
   };
 

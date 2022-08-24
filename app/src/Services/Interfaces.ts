@@ -17,6 +17,7 @@ export interface ILoggedUser {
   deleted: boolean;
   email: string;
   id: number;
+  userId: number;
   name: string;
   password: string;
   role: string;

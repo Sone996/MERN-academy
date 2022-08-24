@@ -6,6 +6,7 @@ import { ActionTypes } from "../../Context/Reducers/App/AppProvider.types";
 import { authService } from "../../Modules/AuthModule/Auth.service";
 import { notificationMsg } from "../../Services/BaseService";
 import { errorMsg, successMsg } from "../../Services/MessageDisplayHandler";
+import { TOKEN_LS_NAME } from "../../Constants/Constants";
 
 export function LoginHook() {
   // eslint-disable-next-line
@@ -23,6 +24,7 @@ export function LoginHook() {
       errorMsg(notificationMsg(err, null));
     },
     onSettled: (response: any) => {
+      localStorage.setItem(TOKEN_LS_NAME, JSON.stringify(response.data.token));
       dispatch({
         type: ActionTypes.SET_LOADER,
         payload: false,
@@ -32,8 +34,8 @@ export function LoginHook() {
         payload: response.data,
       });
       successMsg(notificationMsg(response, "lOGIN_SUCCESS"));
-      if (response.data.role === "teacher") {
-        history.push("/teacher-home");
+      history.push("/teacher-home");
+      if (response.role === "teacher") {
       } else {
         history.push("/student-home");
       }

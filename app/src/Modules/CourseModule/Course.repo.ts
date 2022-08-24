@@ -6,7 +6,7 @@ const ROUTES = {
   STUDENT: "/student",
   REQUEST_COURSE: "/request_course",
   COURSE: "/course",
-  COURSES: "/courses",
+  COURSES: "/course/courses",
   TEACHER: "/teacher",
 };
 

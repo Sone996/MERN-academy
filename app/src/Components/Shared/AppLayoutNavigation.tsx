@@ -1,5 +1,5 @@
 import { FC, useContext } from "react";
-import { useMutation, useQueryClient } from "react-query";
+import { useMutation } from "react-query";
 import { Switch, Route } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import logo from "../../assets/images/factoryww.png";
@@ -27,7 +27,8 @@ import RateCourse from "../Modals/RateModal";
 
 const AppLayoutNavigation: FC = () => {
   const [contextState, dispatch] = useContext(AppContext);
-  const loggedUser = useQueryClient().getQueryData<ILoggedUser>("activeUser");
+  // const loggedUser = useQueryClient().getQueryData<ILoggedUser>("activeUser");  // stari nacin
+  const loggedUser: ILoggedUser = authService.isLogged();
 
   const history = useHistory();
 
@@ -40,7 +41,7 @@ const AppLayoutNavigation: FC = () => {
   };
   const goProfile = () => {
     personService
-      .goProfile(loggedUser?.id)
+      .goProfile(loggedUser?.userId)
       .then((res) => {
         dispatch({
           type: ActionTypes.SET_PROFILE_DATA,

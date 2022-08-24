@@ -2,27 +2,28 @@ import { TOKEN_LS_NAME } from "../Constants/Constants";
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  // baseURL: process.env.VUE_APP_API_PATH
-  // baseURL: "http://192.168.1.139:5000/",
   baseURL: "http://127.0.0.1:3200/api/v1/",
 });
 
 axiosInstance.interceptors.request.use((config) => {
-  const token = localStorage.getItem(TOKEN_LS_NAME);
-  //store.commit('globalModule/toggleLoader', true)
+  const token: any = localStorage.getItem(TOKEN_LS_NAME);
   if (token) {
-    config.headers["session-id"] = token;
+    // config.data = token;
+    // return Promise.reject(error)
   }
   return config;
 });
 
+console.log(localStorage.getItem(TOKEN_LS_NAME))
+
+axiosInstance.defaults.headers.common['Authorization'] =
+'Bearer ' + localStorage.getItem(TOKEN_LS_NAME);
+
 axiosInstance.interceptors.response.use(
   (response) => {
-    //store.commit('globalModule/toggleLoader', false)
     return Promise.resolve(response);
   },
   (error) => {
-    //store.commit('globalModule/toggleLoader', false)
     return Promise.reject(error);
   }
 );
