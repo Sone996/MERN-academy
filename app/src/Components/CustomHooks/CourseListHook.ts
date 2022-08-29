@@ -9,7 +9,7 @@ const CourseListHook = () => {
     let allCouresList = data.data;
     allCouresList.forEach((student: {}, i: number) => {
       allCouresList[i] = {
-        id: allCouresList[i].id,
+        id: allCouresList[i]._id,
         name: allCouresList[i].name,
         average_mark: allCouresList[i].average_mark,
         price: allCouresList[i].price,

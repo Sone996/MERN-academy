@@ -34,6 +34,7 @@ export interface IBasicCourseData {
 export interface IBasicTeacherCourseData {
   average_mark: number;
   id: number;
+  _id: number;
   course_name: string;
   price: number;
 }

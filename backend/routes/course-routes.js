@@ -19,9 +19,11 @@ router.route("/courses").get(authenticateUser, getCourses).post(authenticateUser
 
 // router.get("/courses", getCourses);
 // router.post("/courses", createCourse);
-router.get("/course/:id", getSingleCourse);
-router.patch("/course/:id", updateCourse);
-router.delete("/course/:id", deleteCourse);
+
+router.route("/courses/:id").get(authenticateUser, getSingleCourse).patch(updateCourse).delete(deleteCourse)
+// router.get("/course/:id", getSingleCourse);
+// router.patch("/course/:id", updateCourse);
+// router.delete("/course/:id", deleteCourse);
 
 router.route("/teacher/:id/courses").get(authenticateUser, getTeacherCourses)
 // router.get("/teacher/:id/courses", getTeacherCourses)
